@@ -18,8 +18,6 @@ const App = () => {
     queryFn: fetchTracks,
   });
 
-  console.log(trackUrls);
-
   const [trackIndex, setTrackIndex] = useState(0);
 
   const goToNextTrack = () => {

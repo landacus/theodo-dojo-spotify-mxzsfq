@@ -1,5 +1,5 @@
 const apiToken: string =
-  'BQDIJq_AKP9YiqD7oyBAPMukKkIbXrd5MRq7FrUekpNM0PLnRlOZiXYZHNPYKW1H9wSzAz90p_Yb5TUas7tPhxnhbBIHTp9fzObu9nmm3YIdi24RT4s';
+  'BQAuNZeTAc56UwsHCaWsG_AAM6gIX_63p-rpFAFyGXUVcOBhQDoa1lA7DHYpQcuJ6_7iDjiAdiV-6_sKY-CwI2gFcbAz5nfgtC92NWPoEfIG68p-Tj0';
 
 export const fetchTracks = async () => {
   const response = await fetch('https://api.spotify.com/v1/me/tracks', {
