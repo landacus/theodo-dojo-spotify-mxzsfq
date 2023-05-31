@@ -2,6 +2,7 @@ import logo from './assets/logo.svg';
 import './App.css';
 import { fetchTracks } from './lib/fetchTracks.ts';
 import { useState } from 'react';
+import { useQuery } from '@tanstack/react-query';
 
 const App = () => {
   const trackUrls = [
@@ -17,7 +18,7 @@ const App = () => {
     queryFn: fetchTracks,
   });
 
-  console.log(data);
+  console.log(trackUrls);
 
   const [trackIndex, setTrackIndex] = useState(0);
 
