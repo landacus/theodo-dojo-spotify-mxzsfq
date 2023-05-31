@@ -1,11 +1,9 @@
-const apiToken = getAccessToken(
-  '24ae68293d38477d8a8296cfbe436f75',
-  'bd2a62f638174b1ea0791bd26975972f',
-);
+import { SavedTrack, Track } from 'spotify-types';
 
-console.log(apiToken);
+const apiToken =
+  'BQBJTnNw0KB4gGUl5mWrYDrdSeDX3ZBUKWUT1tZlnYoHh4uPyVsAHLfNhRDbVJ-xIKRL392GPA-19uvzL8MKU44a_vPfUVALXN1Jq6srRdAodYVldzn16rziuantsqGViKwFV__9gTD8zNREB-Hy_8zZ-trLHtdbxjEGD-xG2zADVRkWwD50P5wLZSi151po9Pz8levsJ7gJnTAZYakafSY_XVXrF3YIEIaX5VKsl_-cTNYlQz4Vy6swhJLrN5rgJrJ46tAZ_4Jrqd--jMhn64nfQyWTHpMgeTAHB5KK-n_agF1frltSYr26l3tYL9VYY7-SFg';
 
-export const fetchTracks = async () => {
+export const fetchTracks = async (): Promise<SavedTrack[]> => {
   const response = await fetch('https://api.spotify.com/v1/me/tracks', {
     method: 'GET',
     headers: {
@@ -15,7 +13,7 @@ export const fetchTracks = async () => {
   if (!response.ok) {
     throw new Error(`Fetching tracks failed with status ${response.status}`);
   }
-  const data = (await response.json()) as { items: unknown[] };
+  const data = (await response.json()) as { items: SavedTrack[] };
 
   return data.items;
 };

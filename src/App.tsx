@@ -3,6 +3,7 @@ import './App.css';
 import { fetchTracks } from './lib/fetchTracks.ts';
 import { useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
+import { SavedTrack } from 'spotify-types';
 
 const App = () => {
   const trackUrls = [
@@ -13,15 +14,26 @@ const App = () => {
     'https://p.scdn.co/mp3-preview/ac28d1b0be285ed3bfd8e9fa5fad133776d7cf36',
   ];
 
-  const { data: tracks } = useQuery({
+  const { data: tracks }: { data: SavedTrack[] | undefined } = useQuery({
     queryKey: ['tracks'],
     queryFn: fetchTracks,
   });
-
   const [trackIndex, setTrackIndex] = useState(0);
 
   const goToNextTrack = () => {
     setTrackIndex(trackIndex + 1);
+  };
+
+  const checkAnswer = (id: string, current_id: string) => {
+    if (current_id == id) {
+      swal('Bravo', 'Bonne réponse', 'success');
+    }
+  };
+
+  console.log(tracks);
+  const getImgUrl = (track: SavedTrack | undefined) => {
+    const src = track?.track?.album.images[0]?.url; // A changer ;)
+    return src;
   };
 
   return (
@@ -31,16 +43,33 @@ const App = () => {
         <h1 className="App-title">Bienvenue sur le blind test</h1>
       </header>
       <div className="App-images">
-        <p>
-          Il va falloir modifier le code pour faire un vrai blind test ! Ouiii
-        </p>
+        {tracks && <p>{tracks[trackIndex]?.track.name}</p>}
+
+        {tracks && (
+          <img src={getImgUrl(tracks[trackIndex])} width="300px" alt="" />
+        )}
       </div>
       <div className="App-buttons">
-        <audio src={trackUrls[0]} autoPlay controls />
-        <audio src={tracks?.preview_url} autoPlay controls />
+        {tracks && (
+          <audio
+            src={tracks[trackIndex]?.track.preview_url}
+            autoPlay
+            controls
+          />
+        )}
         <button onClick={goToNextTrack}>Next track</button>
+        {tracks && tracks[trackIndex] && (
+          <button> {tracks[trackIndex]?.track.name} </button>
+        )}
+        {tracks && tracks[trackIndex + 1] && (
+          <button> {tracks[trackIndex + 1]?.track.name} </button>
+        )}
+        {tracks && tracks[trackIndex + 2] && (
+          <button> {tracks[trackIndex + 2]?.track.name} </button>
+        )}
       </div>
     </div>
   );
 };
+
 export default App;
