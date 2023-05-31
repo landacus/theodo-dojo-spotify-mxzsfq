@@ -37,7 +37,7 @@ const App = () => {
       </div>
       <div className="App-buttons">
         <audio src={trackUrls[0]} autoPlay controls />
-        <audio src={trackUrls[trackIndex]} autoPlay controls />
+        <audio src={tracks?.preview_url} autoPlay controls />
         <button onClick={goToNextTrack}>Next track</button>
       </div>
     </div>
