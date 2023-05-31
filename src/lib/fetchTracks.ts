@@ -1,7 +1,7 @@
 import { SavedTrack, Track } from 'spotify-types';
 
 const apiToken =
-  'BQBJTnNw0KB4gGUl5mWrYDrdSeDX3ZBUKWUT1tZlnYoHh4uPyVsAHLfNhRDbVJ-xIKRL392GPA-19uvzL8MKU44a_vPfUVALXN1Jq6srRdAodYVldzn16rziuantsqGViKwFV__9gTD8zNREB-Hy_8zZ-trLHtdbxjEGD-xG2zADVRkWwD50P5wLZSi151po9Pz8levsJ7gJnTAZYakafSY_XVXrF3YIEIaX5VKsl_-cTNYlQz4Vy6swhJLrN5rgJrJ46tAZ_4Jrqd--jMhn64nfQyWTHpMgeTAHB5KK-n_agF1frltSYr26l3tYL9VYY7-SFg';
+  'BQBJkWnvpmsZO0hyBp9DWv2lkz0kyT3NuY-dJMbv87L99XhmVFt-k96Fnfrlns5_Zo6xI1d4-7g-HaUOnzhlupNAuM-P0_q3_GAwbD0XVzbNDXV7GK1y0DnAZwUSygigrJrLPL1sTo6hAf6cNc1j2QNUodi8uP1s2t60KMddAa78pp-eRfyV8vDIIdKN2HgVMZ3FbpGoNYAnvY9hBC3oXnIM-LordyJ7HJWHRpgmOEe6DdhER6ohdmUBisUDYp2r9WM3cQ1AitMnjS3ecbd3cADRXD5sfIoAPls3Hxp3tWDfclOqcPTHOwMX_m7JcECYy0nqgg';
 
 export const fetchTracks = async (): Promise<SavedTrack[]> => {
   const response = await fetch('https://api.spotify.com/v1/me/tracks', {
